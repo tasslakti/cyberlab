@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block body %}
+    <h1>Liste des catégories</h1>
+    <a href="{{ path('app_categories_new') }}">Créer une nouvelle catégorie</a>
+
+    <ul>
+        {% for categorie in categories %}
+            <li>
+                {{ categorie.nom }}
+                <a href="{{ path('app_categories_show', {'id': categorie.id}) }}">Voir</a>
+                <a href="{{ path('app_categories_edit', {'id': categorie.id}) }}">Modifier</a>
+                <form method="post" action="{{ path('app_categories_delete', {'id': categorie.id}) }}" style="display:inline-block;">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}">
+                    <button type="submit">Supprimer</button>
+                </form>
+            </li>
+        {% else %}
+            <li>Aucune catégorie.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

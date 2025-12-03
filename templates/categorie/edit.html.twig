@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ categorie.id ? 'Modifier' : 'Nouvelle' }} Catégorie{% endblock %}
+
+{% block body %}
+    <h1>{{ categorie.id ? 'Modifier' : 'Nouvelle' }} Catégorie</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button>{{ categorie.id ? 'Modifier' : 'Créer' }}</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_categories_index') }}">Retour à la liste</a>
+{% endblock %}
+

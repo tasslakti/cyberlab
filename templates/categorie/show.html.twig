@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie{% endblock %}
+
+{% block body %}
+    <h1>{{ categorie.nom }}</h1>
+
+    <a href="{{ path('app_categories_index') }}">Retour à la liste</a>
+    <a href="{{ path('app_categories_edit', {'id': categorie.id}) }}">Modifier</a>
+{% endblock %}
